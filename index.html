@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MR Delights | Premium Dates & Nuts - Kerala</title>
-    <meta name="description" content="Premium quality dates and nuts from nature. Experience pure luxury in every bite with MR Delights based in Kerala.">
+    <meta name="description"
+        content="Premium quality dates and nuts from nature. Experience pure luxury in every bite with MR Delights based in Kerala.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <!-- Boxicons for elegant icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
     <!-- Navbar -->
     <header class="navbar">
         <div class="container nav-content">
-            <a href="#" class="logo-link"><img src="logo.jpg" alt="MR Delights Logo" class="brand-logo"></a>
+            <a href="#" class="logo-link"><img src="logo.png" alt="MR Delights Logo" class="brand-logo"></a>
             <nav class="nav-links">
                 <a href="#about">About</a>
-                <a href="#products">Collection</a>
+                <a href="#products">Products</a>
                 <a href="#contact">Contact</a>
             </nav>
             <a href="#products" class="btn btn-outline">Shop Now</a>
@@ -31,11 +36,12 @@
     <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="container hero-content">
-            <span class="subtitle">Premium Dates & Nuts from Nature</span>
-            <h1 class="headline">Experience Pure <span class="gold-text">Luxury</span> <br>in Every Bite</h1>
-            <p class="hero-desc">Sourced directly from the finest groves, curated for connoisseurs in Kerala.</p>
+            <span class="subtitle">Experience the ultimate fusion of Premium and health.</span>
+            <h1 class="headline">Nature’s Gold, Delivered from the <span class="gold-text">Heart of Kerala.</span></h1>
+            <p class="hero-desc">We handpick the world’s finest premium dates and crunchy nuts to bring a touch of
+                elegance to your daily snacking.</p>
             <div class="hero-btns">
-                <a href="#products" class="btn btn-primary">Discover the Collection</a>
+                <a href="#products" class="btn btn-primary">Discover our Products</a>
                 <a href="#about" class="btn btn-secondary">Our Story</a>
             </div>
             <div class="trust-badges">
@@ -50,14 +56,14 @@
     <section class="about" id="about">
         <div class="container about-grid">
             <div class="about-image">
-                <!-- Using a placeholder gradient for the image box currently, or generate one -->
-                <div class="img-placeholder">
-                    <!-- The after psuedoclass creates border, content is empty here intentionally -->
-                </div>
+                <img src="second_img.png" alt="About MR Delights" class="img-placeholder"
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block;">
             </div>
             <div class="about-text">
                 <h2 class="section-title">The Essence of <span class="gold-text">Purity</span></h2>
-                <p>Based in the heart of Kerala, MR Delights brings you a curated selection of the world's most exquisite dates and premium nuts. We believe that true luxury lies in nature's simplest offerings, presented without compromise.</p>
+                <p>Based in the heart of Kerala, MR Delights brings you a curated selection of the world's most
+                    exquisite dates and premium nuts. We believe that true luxury lies in nature's simplest offerings,
+                    presented without compromise.</p>
                 <ul class="features-list">
                     <li><i class='bx bx-check-circle'></i> Handpicked for exceptional quality</li>
                     <li><i class='bx bx-check-circle'></i> Sun-dried naturally, nutrient-rich</li>
@@ -71,10 +77,10 @@
     <section class="products" id="products">
         <div class="container">
             <div class="section-header text-center">
-                <span class="subtitle">Our Exquisite Collection</span>
+                <span class="subtitle">Our Exquisite Products</span>
                 <h2 class="section-title">Premium Selection</h2>
             </div>
-            
+
             <div class="category">
                 <h3 class="category-title">Royal Dates</h3>
                 <div class="product-grid" id="dates-grid">
@@ -88,67 +94,81 @@
                     <!-- Products will be generated by JS -->
                 </div>
             </div>
+            <div class="category">
+                <h3 class="category-title">Premium Nuts</h3>
+                <div class="product-grid" id="nuts-grid">
+              </div>
+            </div>
+            <div class="category">
+                 <h3 class="category-title">Nutritious Seeds</h3>
+                 <div class="product-grid" id="seeds-grid">
+              </div>
+            </div>
         </div>
+        
     </section>
 
     <!-- Order Modal -->
-    <div class="modal-overlay" id="order-modal">
-        <div class="modal-content">
-            <button class="close-modal"><i class='bx bx-x'></i></button>
-            <div class="modal-header">
-                <h3>Place Your Order</h3>
-                <p>Order via WhatsApp instantly</p>
-            </div>
-            <form id="order-form" class="order-form">
-                <input type="hidden" id="selected-product" name="product">
-                <div class="selected-item-display">
-                    <span id="display-product-name">Product Name</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required placeholder="Enter your name">
-                </div>
-                
-                <div class="form-row" style="display:flex; gap:1rem; margin-bottom:1.2rem;">
-                    <div class="form-group" style="flex:1; margin-bottom:0;">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" required placeholder="10-digit mobile">
-                    </div>
-                </div>
-
-                <div class="form-row" style="display:flex; gap:1rem; margin-bottom:1.2rem;">
-                    <div class="form-group" style="flex:1; margin-bottom:0;">
-                        <label for="quantity">Quantity</label>
-                        <select id="quantity" required>
-                            <option value="250g">250g</option>
-                            <option value="500g">500g</option>
-                            <option value="1kg">1kg</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="address">Delivery Address (Kerala)</label>
-                    <textarea id="address" rows="3" required placeholder="Full address with PIN code"></textarea>
-                </div>
-                
-                <button type="submit" class="btn btn-whatsapp">
-                    <i class='bx bxl-whatsapp'></i> Order via WhatsApp
-                </button>
-            </form>
+   <div class="modal-overlay" id="order-modal">
+    <div class="modal-content">
+        <button class="close-modal"><i class='bx bx-x'></i></button>
+        <div class="modal-header">
+            <h3>Place Your Order</h3>
+            <p>Order via WhatsApp instantly</p>
         </div>
+        <form id="order-form" class="order-form">
+            <input type="hidden" id="selected-product" name="product">
+            
+            <div class="selected-item-display" style="display: flex; justify-content: space-between; align-items: center; background: rgba(191, 153, 71, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid rgba(191, 153, 71, 0.2);">
+                <span id="display-product-name" style="font-weight: 600; color: #fff; font-size: 1.1rem;">Product Name</span>
+                <span style="color: #bf9947; font-weight: 700; font-size: 1.2rem;">₹<span id="display-price">0</span></span>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required placeholder="Enter your name">
+            </div>
+
+            <div class="form-row" style="display:flex; gap:1rem; margin-bottom:1.2rem;">
+                <div class="form-group" style="flex:1; margin-bottom:0;">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="10-digit mobile">
+                </div>
+            </div>
+
+            <div class="form-row" style="display:flex; gap:1rem; margin-bottom:1.2rem;">
+                <div class="form-group" style="flex:1; margin-bottom:0;">
+                    <label for="quantity">Quantity</label>
+                    <select id="quantity" required>
+                        <option value="250g">250g</option>
+                        <option value="500g">500g</option>
+                        <option value="1kg">1kg</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Delivery Address (Kerala)</label>
+                <textarea id="address" rows="3" required placeholder="Full address with PIN code"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-whatsapp">
+                <i class='bx bxl-whatsapp'></i> Order via WhatsApp
+            </button>
+        </form>
     </div>
+</div>
 
     <!-- Contact & Footer -->
     <footer class="footer" id="contact">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <a href="#" class="logo-link"><img src="logo.jpg" alt="MR Delights Logo" class="footer-logo"></a>
+                <a href="#" class="logo-link"><img src="logo.png" alt="MR Delights Logo" class="footer-logo"></a>
                 <p>Experience pure luxury in every bite. The finest dates and nuts delivered across Kerala.</p>
                 <div class="social-links">
                     <a href="#"><i class='bx bxl-instagram'></i></a>
-                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="https://www.instagram.com/mr.dates.nuts?igsh=NzdpeWE1c2pwaWFi" target="_blank">
+                        <i class='bx bxl-instagram'></i></a>
                     <a href="#"><i class='bx bxl-whatsapp'></i></a>
                 </div>
             </div>
@@ -168,4 +188,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
