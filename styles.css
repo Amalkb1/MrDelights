@@ -218,7 +218,10 @@ h1, h2, h3, h4, .logo, .gold-text {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(11, 61, 46, 0.4) 0%, #052219 100%);
+    background: radial-gradient(circle at center, rgba(11, 61, 46, 0.4) 0%, rgba(5, 34, 25, 0.85) 100%), url('hero_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: 1;
 }
 
