@@ -1,137 +1,114 @@
+// 1. Full Product Data with Pricing
 const products = {
     dates: [
-        { id: 'd1', name: 'Ajwa Dates', desc: 'Premium black dates with an exceptionally soft and fruity profile. A luxurious treat.', icon: '🌴', image: 'ajwa_dates.png' },
-        { id: 'd2', name: 'Deglet Noor', desc: 'The "Queen of Dates". Light, sweet, and semi-dry with a honey-like taste.', icon: '🏜️', image: 'deglet_noor.png' },
-        { id: 'd3', name: 'Sukkary Dates', desc: 'Melt-in-your-mouth sweetness with a golden hue. Crisp on the outside, soft inside.', icon: '✨', image: 'sukkary_dates.png' },
-        { id: 'd4', name: 'Mabroom Dates', desc: 'Slender, dark red dates with a chewy flesh. Naturally robust flavor.', icon: '💎' },
+        { id: 'd1', name: 'Ajwa Dates', prices: { '250g': 450, '500g': 850, '1kg': 1600 }, desc: 'Premium black dates with an exceptionally soft profile.', icon: '🌴', image: 'ajwa_dates.png' },
+        { id: 'd2', name: 'Deglet Noor', prices: { '250g': 200, '500g': 380, '1kg': 700 }, desc: 'The "Queen of Dates". Light, sweet, and semi-dry.', icon: '🏜️', image: 'deglet_noor.png' },
+        { id: 'd3', name: 'Sukkary Dates', prices: { '250g': 300, '500g': 550, '1kg': 1000 }, desc: 'Melt-in-your-mouth sweetness with a golden hue.', icon: '✨', image: 'sukkary_dates.png' },
+        { id: 'd4', name: 'Mabroom Dates', prices: { '250g': 350, '500g': 650, '1kg': 1200 }, desc: 'Slender, dark red dates with a chewy flesh.', icon: '💎', image: 'Mabroom_Dates.png' }
     ],
     figs: [
-        { id: 'f1', name: 'Turkish Figs', desc: 'Large, naturally sun-dried figs with a rich, caramel-like sweetness.', icon: '🍯', image: 'turkish_figs.png' },
-        { id: 'f2', name: 'Afghani Figs', desc: 'Premium white figs, incredibly soft and nutrient-dense from the highlands.', icon: '🏔️', image: 'afghani_figs.png' }
+        { id: 'f1', name: 'Turkish Figs', prices: { '250g': 300, '500g': 580, '1kg': 1100 }, desc: 'Large, sun-dried figs with a rich caramel sweetness.', icon: '🍯', image: 'turkish_figs.png' },
+        { id: 'f2', name: 'Afghani Figs', prices: { '250g': 400, '500g': 750, '1kg': 1400 }, desc: 'Premium white figs, incredibly soft and nutrient-dense.', icon: '🏔️', image: 'afghani_figs.png' }
+    ],
+    nuts: [
+        { id: 'n1', name: 'Cashew', prices: { '250g': 250, '500g': 480, '1kg': 900 }, desc: 'Creamy, buttery, and premium grade crunchy cashews.', icon: '🥜', image: 'Cashew_nut.png' },
+        { id: 'n2', name: 'Almond', prices: { '250g': 220, '500g': 420, '1kg': 800 }, desc: 'Crunchy California almonds, rich in Vitamin E.', icon: '🌰', image: 'Almond.png' },
+        { id: 'n3', name: 'Pistachio', prices: { '250g': 350, '500g': 650, '1kg': 1200 }, desc: 'Perfectly roasted and lightly salted premium pistachios.', icon: '💚', image: 'pistachio_nut.png' },
+        { id: 'n4', name: 'Walnut', prices: { '250g': 300, '500g': 550, '1kg': 1050 }, desc: 'High-quality walnuts, packed with Omega-3.', icon: '🧠', image: 'Walnut.png' }
+    ],
+    seeds: [
+        { id: 's1', name: 'Sunflower Seed', prices: { '250g': 100, '500g': 180, '1kg': 350 }, desc: 'Nutrient-rich seeds, perfect for a healthy crunch.', icon: '🌻', image: 'sunflower_seeds.png' },
+        { id: 's2', name: 'Pumpkin Seed', prices: { '250g': 150, '500g': 280, '1kg': 500 }, desc: 'Premium green pumpkin seeds, great for energy.', icon: '🎃', image: 'pumpkin_seeds.png' },
+        { id: 's3', name: 'Watermelon Seed', prices: { '250g': 80, '500g': 150, '1kg': 280 }, desc: 'Sun-dried seeds, a traditional healthy mineral-rich snack.', icon: '🍉', image: 'watermelon_seeds.png' }
     ]
 };
 
-// Populate Products
+// 2. Render Products to Page
 function renderProducts() {
-    const datesGrid = document.getElementById('dates-grid');
-    const figsGrid = document.getElementById('figs-grid');
-
-    if (!datesGrid || !figsGrid) return;
-
     const generateCard = (prod) => `
         <div class="product-card">
             <div class="product-img-wrap">
-                ${prod.image ? `<img src="${prod.image}" alt="${prod.name}" class="product-image">` : `<span class="product-emoji-placeholder">${prod.icon}</span>`}
+                <img src="${prod.image}" alt="${prod.name}" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="product-emoji-placeholder" style="display: none;">${prod.icon}</span>
             </div>
             <div class="product-content">
                 <h4 class="product-name">${prod.name}</h4>
                 <p class="product-desc">${prod.desc}</p>
-                <button class="btn btn-order" data-product="${prod.name}">Order Now</button>
+                <button class="btn btn-order" onclick="openOrderModal('${prod.name}')">Order Now</button>
             </div>
         </div>
     `;
 
-    datesGrid.innerHTML = products.dates.map(generateCard).join('');
-    figsGrid.innerHTML = products.figs.map(generateCard).join('');
+    const grids = {
+        'dates-grid': products.dates,
+        'figs-grid': products.figs,
+        'nuts-grid': products.nuts,
+        'seeds-grid': products.seeds
+    };
+
+    for (const [id, data] of Object.entries(grids)) {
+        const container = document.getElementById(id);
+        if (container) container.innerHTML = data.map(generateCard).join('');
+    }
 }
 
+// 3. Modal & Pricing Logic
+const modal = document.getElementById('order-modal');
+const quantitySelect = document.getElementById('quantity');
+const priceDisplay = document.getElementById('display-price');
+const productNameDisplay = document.getElementById('display-product-name');
+const selectedProductInput = document.getElementById('selected-product');
+
+function openOrderModal(productName) {
+    productNameDisplay.textContent = productName;
+    selectedProductInput.value = productName;
+    updatePrice();
+    modal.classList.add('active');
+}
+
+function updatePrice() {
+    const productName = selectedProductInput.value;
+    const qty = quantitySelect.value;
+    
+    let currentProd = null;
+    for (const cat in products) {
+        currentProd = products[cat].find(p => p.name === productName);
+        if (currentProd) break;
+    }
+
+    if (currentProd && currentProd.prices) {
+        priceDisplay.textContent = currentProd.prices[qty];
+    }
+}
+
+// 4. Form Submission (WhatsApp)
+document.getElementById('order-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const product = selectedProductInput.value;
+    const qty = quantitySelect.value;
+    const price = priceDisplay.textContent;
+
+    const message = `Hi MR Delights! I want to order:\n\n` +
+                    `*Product:* ${product}\n` +
+                    `*Quantity:* ${qty}\n` +
+                    `*Total Price:* ₹${price}\n` +
+                    `------------------\n` +
+                    `*Customer:* ${name}\n` +
+                    `*Phone:* ${phone}\n` +
+                    `*Address:* ${address}`;
+
+    window.open(`https://wa.me/918289842739?text=${encodeURIComponent(message)}`, '_blank');
+});
+
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initial Render
     renderProducts();
-
-    // 2. Navbar Scroll Effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Mobile Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'var(--glass-bg)';
-                navLinks.style.backdropFilter = 'blur(10px)';
-                navLinks.style.padding = '1rem';
-                navLinks.style.borderBottom = '1px solid var(--glass-border)';
-            }
-        });
-    }
-
-    // 3. Modal Logic
-    const modal = document.getElementById('order-modal');
-    const closeBtn = document.querySelector('.close-modal');
-    const displayProductName = document.getElementById('display-product-name');
-    const hiddenProductInput = document.getElementById('selected-product');
-
-    // Attach listener to dynamically generated order buttons
-    document.body.addEventListener('click', (e) => {
-        if(e.target.classList.contains('btn-order')) {
-            const productName = e.target.getAttribute('data-product');
-            openModal(productName);
-        }
-    });
-
-    if (closeBtn && modal) {
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
-
-        modal.addEventListener('click', (e) => {
-            if(e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
-    }
-
-    function openModal(productName) {
-        if (displayProductName && hiddenProductInput && modal) {
-            displayProductName.textContent = productName;
-            hiddenProductInput.value = productName;
-            modal.classList.add('active');
-        }
-    }
-
-    // 4. Form Submission -> WhatsApp
-    const form = document.getElementById('order-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const product = hiddenProductInput.value;
-            const qty = document.getElementById('quantity').value;
-            const address = document.getElementById('address').value;
-
-            // Construct Message
-            const message = `Hi, I want to order from MR Delights\nName: ${name}\nPhone: ${phone}\nProduct: ${product}\nQuantity: ${qty}\nAddress: ${address}`;
-            
-            // Encode URL
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappNumber = "8289842739"; // Requested number
-            
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp in new tab
-            window.open(whatsappUrl, '_blank');
-            
-            // Close modal and reset
-            modal.classList.remove('active');
-            form.reset();
-        });
-    }
+    quantitySelect.addEventListener('change', updatePrice);
+    
+    // Close modal logic
+    document.querySelector('.close-modal').onclick = () => modal.classList.remove('active');
+    window.onclick = (e) => { if (e.target == modal) modal.classList.remove('active'); };
 });
