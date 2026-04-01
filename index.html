@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MR Delights | Premium Dates & Nuts - Kerala</title>
+    <meta name="description"
+        content="Premium quality dates and nuts from nature. Experience pure luxury in every bite with MR Delights based in Kerala.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <!-- Cart Toast Notification -->
+    <div id="cart-toast" class="cart-toast"></div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo-link"><img src="logo.png" alt="MR Delights Logo" class="brand-logo"></a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <a href="#products" class="btn btn-outline">Shop Now</a>
+                <!-- Cart Button -->
+                <button class="cart-icon-btn" id="cart-btn" aria-label="View Cart">
+                    <i class='bx bx-shopping-bag'></i>
+                    <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+                </button>
+            </div>
+            <div class="menu-toggle"><i class='bx bx-menu'></i></div>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Cart Sidebar -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar-header">
+            <h3><i class='bx bx-shopping-bag'></i> Your Cart</h3>
+            <button class="close-cart" id="close-cart-btn"><i class='bx bx-x'></i></button>
+        </div>
+
+        <!-- Empty State -->
+        <div class="cart-empty" id="cart-empty">
+            <i class='bx bx-cart'></i>
+            <p>Your cart is empty</p>
+            <span>Add some premium treats!</span>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="cart-items-list" id="cart-items-list"></div>
+
+        <!-- Cart Footer -->
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Grand Total</span>
+                <strong id="cart-grand-total">₹0</strong>
+            </div>
+            <button class="btn btn-whatsapp" id="cart-checkout-btn" style="display:none; width:100%; margin-top:1rem;">
+                <i class='bx bxl-whatsapp'></i> Proceed to Order
+            </button>
+        </div>
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <span class="subtitle">Experience the ultimate fusion of Premium and health.</span>
+            <h1 class="headline">Nature's Gold, Delivered from the <span class="gold-text">Heart of Kerala.</span></h1>
+            <p class="hero-desc">We handpick the world's finest premium dates and crunchy nuts to bring a touch of
+                elegance to your daily snacking.</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn btn-primary">Discover our Products</a>
+                <a href="#about" class="btn btn-secondary">Our Story</a>
+            </div>
+            <div class="trust-badges">
+                <div class="badge"><i class='bx bx-check-shield'></i> 100% Natural</div>
+                <div class="badge"><i class='bx bx-leaf'></i> No Preservatives</div>
+                <div class="badge"><i class='bx bx-award'></i> Premium Grade</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Why Choose Us -->
+    <section class="about" id="about">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="second_img.png" alt="About MR Delights" class="img-placeholder"
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block;">
+            </div>
+            <div class="about-text">
+                <h2 class="section-title">The Essence of <span class="gold-text">Purity</span></h2>
+                <p>Based in the heart of Kerala, MR Delights brings you a curated selection of the world's most
+                    exquisite dates and premium nuts. We believe that true luxury lies in nature's simplest offerings,
+                    presented without compromise.</p>
+                <ul class="features-list">
+                    <li><i class='bx bx-check-circle'></i> Handpicked for exceptional quality</li>
+                    <li><i class='bx bx-check-circle'></i> Sun-dried naturally, nutrient-rich</li>
+                    <li><i class='bx bx-check-circle'></i> Ethically sourced from ancient groves</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="subtitle">Our Exquisite Products</span>
+                <h2 class="section-title">Premium Selection</h2>
+            </div>
+
+            <div class="category">
+                <h3 class="category-title">Royal Dates</h3>
+                <div class="product-grid" id="dates-grid"></div>
+            </div>
+
+            <div class="category">
+                <h3 class="category-title">Finest Figs</h3>
+                <div class="product-grid" id="figs-grid"></div>
+            </div>
+
+            <div class="category">
+                <h3 class="category-title">Premium Nuts</h3>
+                <div class="product-grid" id="nuts-grid"></div>
+            </div>
+
+            <div class="category">
+                <h3 class="category-title">Nutritious Seeds</h3>
+                <div class="product-grid" id="seeds-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Single Product Order Modal -->
+    <div class="modal-overlay" id="order-modal">
+        <div class="modal-content">
+            <button class="close-modal"><i class='bx bx-x'></i></button>
+            <div class="modal-header">
+                <h3>Place Your Order</h3>
+                <p>Order via WhatsApp instantly</p>
+            </div>
+            <form id="order-form" class="order-form">
+                <input type="hidden" id="selected-product" name="product">
+
+                <div class="selected-item-display">
+                    <span id="display-product-name">Product Name</span>
+                    <span>₹<span id="display-price">0</span></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" style="flex:1; margin-bottom:0;">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="10-digit mobile">
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top:1.2rem;">
+                    <div class="form-group" style="flex:1; margin-bottom:0;">
+                        <label for="quantity">Quantity</label>
+                        <select id="quantity" required>
+                            <option value="250g">250g</option>
+                            <option value="500g">500g</option>
+                            <option value="1kg">1kg</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:1.2rem;">
+                    <label for="address">Delivery Address (Kerala)</label>
+                    <textarea id="address" rows="3" required placeholder="Full address with PIN code"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-whatsapp">
+                    <i class='bx bxl-whatsapp'></i> Order via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cart Order Modal -->
+    <div class="modal-overlay" id="cart-order-modal">
+        <div class="modal-content">
+            <button class="close-cart-modal"><i class='bx bx-x'></i></button>
+            <div class="modal-header">
+                <h3>Complete Your Order</h3>
+                <p>Confirm cart & order via WhatsApp</p>
+            </div>
+            <form id="cart-order-form" class="order-form">
+
+                <!-- Cart Summary inside modal -->
+                <div class="cart-modal-summary" id="cart-modal-summary"></div>
+
+                <div class="form-group">
+                    <label for="cart-name">Full Name</label>
+                    <input type="text" id="cart-name" required placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="cart-phone">Phone Number</label>
+                    <input type="tel" id="cart-phone" required placeholder="10-digit mobile">
+                </div>
+
+                <div class="form-group">
+                    <label for="cart-address">Delivery Address (Kerala)</label>
+                    <textarea id="cart-address" rows="3" required placeholder="Full address with PIN code"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-whatsapp">
+                    <i class='bx bxl-whatsapp'></i> Order via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact & Footer -->
+    <footer class="footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo-link"><img src="logo.png" alt="MR Delights Logo" class="footer-logo"></a>
+                <p>Experience pure luxury in every bite. The finest dates and nuts delivered across Kerala.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/mr.dates.nuts?igsh=NzdpeWE1c2pwaWFi" target="_blank">
+                        <i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><i class='bx bx-map'></i> Kerala, India</li>
+                    <li><i class='bx bx-phone'></i> +91 8289842739</li>
+                    <li><i class='bx bx-envelope'></i> orders@mrdelights.in</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MR Delights. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
