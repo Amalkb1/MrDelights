@@ -176,12 +176,6 @@ function proceedToCheckout() {
             </div>`;
     }
 
-    // Show/hide delivery notice based on total
-    const deliveryNotice = document.getElementById('delivery-notice');
-    if (deliveryNotice) {
-        deliveryNotice.style.display = cartTotal() < 999 ? 'block' : 'none';
-    }
-
     document.getElementById('cart-order-modal').classList.add('active');
 }
 
@@ -243,14 +237,7 @@ function updatePrice() {
     const qty = quantitySelect.value;
     let currentProd = findProduct(productName);
     if (currentProd && currentProd.prices) {
-        const price = currentProd.prices[qty];
-        priceDisplay.textContent = price;
-
-        // Show/hide delivery notice based on price
-        const deliveryNotice = document.getElementById('single-delivery-notice');
-        if (deliveryNotice) {
-            deliveryNotice.style.display = price < 999 ? 'block' : 'none';
-        }
+        priceDisplay.textContent = currentProd.prices[qty];
     }
 }
 
